@@ -1,4 +1,4 @@
-package dto
+package dtos
 
 type Request struct {
 	Context  string `json:"context" validate:"required,min=100,max=1000"`
