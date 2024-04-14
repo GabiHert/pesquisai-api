@@ -6,7 +6,7 @@ import (
 )
 
 type Response struct {
-	RequestId string `json:"request-id"`
+	RequestId string `json:"id"`
 }
 
 func (r *Response) WriteHttp(w http.ResponseWriter) error {

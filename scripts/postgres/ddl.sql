@@ -1,8 +1,6 @@
-create schema perguntai;
+create schema pesquisai;
 
-
-
-create table perguntai.request (
+create table pesquisai.requests (
 
                                    id UUID primary key,
 
@@ -26,63 +24,11 @@ create table perguntai.request (
 
 
 
-create table perguntai.location (
+create table pesquisai.research (
 
                                     id UUID primary key,
 
-                                    name VARCHAR(10)
-
-);
-
-
-
-create table perguntai.request_location (
-
-                                            request_id UUID,
-
-                                            location_id UUID,
-
-                                            primary key (request_id,location_id),
-
-                                            foreign key (request_id) references request(id),
-
-                                            foreign key (location_id) references location(id)
-
-);
-
-
-
-create table perguntai.language (
-
-                                    id UUID primary key,
-
-                                    name VARCHAR(10)
-
-);
-
-
-
-create table perguntai.request_language (
-
-                                            request_id UUID,
-
-                                            language_id UUID,
-
-                                            primary key (request_id,language_id),
-
-                                            foreign key (request_id) references request(id),
-
-                                            foreign key (language_id) references language(id)
-
-);
-
-
-
-create table perguntai.research (
-
-                                    id UUID primary key,
-
-                                    request_id UUID ,
+                                    requests_id UUID ,
 
                                     title VARCHAR(50),
 
@@ -96,6 +42,58 @@ create table perguntai.research (
 
                                     summary TEXT,
 
-                                    foreign key (request_id) references request(id)
+                                    foreign key (requests_id) references pesquisai.requests(id)
 
-)
+
+);
+
+
+create table pesquisai.location (
+
+                                    id UUID primary key,
+
+                                    name VARCHAR(10)
+
+);
+
+
+create table pesquisai.requests_location (
+
+                                            requests_id UUID,
+
+                                            location_id UUID,
+
+                                            primary key (requests_id,location_id),
+
+                                            foreign key (requests_id) references pesquisai.requests(id),
+
+                                            foreign key (location_id) references pesquisai.location(id)
+
+);
+
+
+
+create table pesquisai.language (
+
+                                    id UUID primary key,
+
+                                    name VARCHAR(10)
+
+);
+
+
+
+create table pesquisai.requests_language (
+
+                                            requests_id UUID,
+
+                                            language_id UUID,
+
+                                            primary key (requests_id,language_id),
+
+                                            foreign key (requests_id) references pesquisai.requests(id),
+
+                                            foreign key (language_id) references pesquisai.language(id)
+
+);
+

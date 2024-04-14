@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"github.com/GabiHert/pesquisai-api/internal/config/errortypes"
 	"github.com/GabiHert/pesquisai-api/internal/delivery/dtos"
 	"github.com/GabiHert/pesquisai-api/internal/delivery/validations"
 	"github.com/GabiHert/pesquisai-api/internal/domain/interfaces"
@@ -24,7 +25,7 @@ func (c *Controller) Create(w http.ResponseWriter, r *http.Request) error {
 	if err != nil {
 		slog.ErrorContext(r.Context(), "Controller.Create",
 			slog.String("error", err.Error()))
-		return err
+		return errortypes.NewValidationException(err.Error())
 	}
 
 	err = validations.Validate(&request)
