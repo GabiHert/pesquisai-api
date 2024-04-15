@@ -31,4 +31,8 @@ func Init(mux *http.ServeMux, controller interfaces.Controller) {
 	mux.HandleFunc("POST /v1/pesquisai", func(writer http.ResponseWriter, request *http.Request) {
 		handleError(writer, controller.Create(writer, request))
 	})
+
+	mux.HandleFunc("GET /v1/pesquisai/{id}", func(writer http.ResponseWriter, request *http.Request) {
+		handleError(writer, controller.Get(writer, request))
+	})
 }

@@ -35,10 +35,11 @@ func (c *Controller) Create(w http.ResponseWriter, r *http.Request) error {
 		return err
 	}
 
+	id := uuid.NewString()
 	requestModel := models.Request{
-		ID:       uuid.NewString(),
-		Context:  request.Context,
-		Research: request.Research,
+		ID:       &id,
+		Context:  &request.Context,
+		Research: &request.Research,
 	}
 
 	err = c.useCase.Create(r.Context(), requestModel)
@@ -48,7 +49,7 @@ func (c *Controller) Create(w http.ResponseWriter, r *http.Request) error {
 		return err
 	}
 
-	response := dtos.Response{RequestId: requestModel.ID}
+	response := dtos.CreateResponse{RequestId: *requestModel.ID}
 
 	err = response.WriteHttp(w)
 	if err != nil {
@@ -58,6 +59,41 @@ func (c *Controller) Create(w http.ResponseWriter, r *http.Request) error {
 	}
 
 	slog.InfoContext(r.Context(), "Controller.Create",
+		slog.String("details", "process finished"))
+	return nil
+}
+
+func (c *Controller) Get(w http.ResponseWriter, r *http.Request) error {
+	idStr := r.PathValue("id")
+	slog.InfoContext(r.Context(), "Controller.Get",
+		slog.String("details", "process started"),
+		slog.String("id", idStr))
+
+	id, err := uuid.Parse(idStr)
+	if err != nil {
+		slog.ErrorContext(r.Context(), "Controller.Get",
+			slog.String("error", err.Error()))
+		return errortypes.NewValidationException("'id' must be a valid uuid")
+	}
+
+	res, err := c.useCase.Get(r.Context(), id)
+	if err != nil {
+		slog.ErrorContext(r.Context(), "Controller.Get",
+			slog.String("error", err.Error()))
+		return err
+	}
+
+	var getResponse dtos.GetResponse
+	getResponse.FromModel(res)
+
+	err = getResponse.WriteHttp(w)
+	if err != nil {
+		slog.ErrorContext(r.Context(), "Controller.Get",
+			slog.String("error", err.Error()))
+		return err
+	}
+
+	slog.InfoContext(r.Context(), "Controller.Get",
 		slog.String("details", "process finished"))
 	return nil
 }

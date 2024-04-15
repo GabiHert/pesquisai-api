@@ -10,9 +10,9 @@ create table pesquisai.requests (
 
                                    total_researches INT default 0,
 
-                                   total_finished_researched INT default 0,
+                                   total_finished_researches INT default 0,
 
-                                   status VARCHAR(10),
+                                   status VARCHAR(10) DEFAULT 'PENDING',
 
                                    overall TEXT,
 
@@ -24,17 +24,17 @@ create table pesquisai.requests (
 
 
 
-create table pesquisai.research (
+create table pesquisai.researches (
 
                                     id UUID primary key,
 
-                                    requests_id UUID ,
+                                    request_id UUID ,
 
                                     title VARCHAR(50),
 
                                     link VARCHAR(100),
 
-                                    status VARCHAR(10),
+                                    status VARCHAR(10) DEFAULT 'PROCESSING',
 
                                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
@@ -42,7 +42,7 @@ create table pesquisai.research (
 
                                     summary TEXT,
 
-                                    foreign key (requests_id) references pesquisai.requests(id)
+                                    foreign key (request_id) references pesquisai.requests(id)
 
 
 );

@@ -22,3 +22,13 @@ func NewValidationException(messages ...string) *exceptions.Error {
 			HttpStatusCode: http.StatusBadRequest,
 		}}
 }
+
+func NewNotFoundException(messages ...string) *exceptions.Error {
+	return &exceptions.Error{
+		Messages: messages,
+		ErrorType: exceptions.ErrorType{
+			Code:           "PAPI03",
+			Type:           "Not found",
+			HttpStatusCode: http.StatusNotFound,
+		}}
+}

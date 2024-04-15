@@ -5,11 +5,11 @@ import (
 	"net/http"
 )
 
-type Response struct {
+type CreateResponse struct {
 	RequestId string `json:"id"`
 }
 
-func (r *Response) WriteHttp(w http.ResponseWriter) error {
+func (r *CreateResponse) WriteHttp(w http.ResponseWriter) error {
 	w.Header().Set("Content-Type", "application/json")
 	return json.NewEncoder(w).Encode(r)
 }
