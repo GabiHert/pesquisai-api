@@ -12,7 +12,8 @@ import (
 )
 
 type UseCase struct {
-	requestRepository interfaces.RequestRepository
+	requestRepository   interfaces.RequestRepository
+	aiOrchestratorQueue interfaces.AiOrchestratorQueue
 }
 
 func (u UseCase) Create(ctx context.Context, request models.Request) error {
@@ -20,6 +21,13 @@ func (u UseCase) Create(ctx context.Context, request models.Request) error {
 		slog.String("details", "process started"))
 
 	err := u.requestRepository.Create(ctx, &request)
+	if err != nil {
+		slog.ErrorContext(ctx, "useCase.Create",
+			slog.String("error", err.Error()))
+		return err
+	}
+
+	err = u.aiOrchestratorQueue.Publish(ctx, &request)
 	if err != nil {
 		slog.ErrorContext(ctx, "useCase.Create",
 			slog.String("error", err.Error()))
@@ -50,8 +58,9 @@ func (u UseCase) Get(ctx context.Context, id uuid.UUID) (*models.Request, error)
 	return res, nil
 }
 
-func NewUseCase(requestRepository interfaces.RequestRepository) interfaces.UseCase {
+func NewUseCase(requestRepository interfaces.RequestRepository, aiOrchestratorQueue interfaces.AiOrchestratorQueue) interfaces.UseCase {
 	return &UseCase{
-		requestRepository: requestRepository,
+		requestRepository:   requestRepository,
+		aiOrchestratorQueue: aiOrchestratorQueue,
 	}
 }
