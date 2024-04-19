@@ -1,14 +1,13 @@
 package injector
 
 import (
+	"github.com/GabiHert/pesquisai-api/internal/config/properties"
 	"github.com/GabiHert/pesquisai-api/internal/delivery/controllers"
 	"github.com/GabiHert/pesquisai-api/internal/domain/interfaces"
-	"github.com/GabiHert/pesquisai-api/internal/domain/queue"
 	"github.com/GabiHert/pesquisai-api/internal/domain/usecases"
 	"github.com/GabiHert/pesquisai-database-lib/connection"
 	"github.com/GabiHert/pesquisai-database-lib/repositories"
-	rabbitmqConnection "github.com/GabiHert/pesquisai-rabbitmq-lib/connection"
-	rabbitmq "github.com/GabiHert/pesquisai-rabbitmq-lib/queue"
+	"github.com/GabiHert/pesquisai-rabbitmq-lib/rabbitmq"
 	"gorm.io/gorm"
 	"net/http"
 )
@@ -18,10 +17,9 @@ type Dependencies struct {
 	Controller          interfaces.Controller
 	RequestRepository   interfaces.RequestRepository
 	Connection          *connection.Connection
-	QueueConnection     *rabbitmqConnection.Connection
+	QueueConnection     *rabbitmq.Connection
 	UseCase             interfaces.UseCase
-	Queue               interfaces.Queue
-	AiOrchestratorQueue interfaces.AiOrchestratorQueue
+	AiOrchestratorQueue interfaces.Queue
 }
 
 func (d *Dependencies) Inject() *Dependencies {
@@ -38,15 +36,14 @@ func (d *Dependencies) Inject() *Dependencies {
 	}
 
 	if d.QueueConnection == nil {
-		d.QueueConnection = &rabbitmqConnection.Connection{}
-	}
-
-	if d.Queue == nil {
-		d.Queue = rabbitmq.NewQueue(d.QueueConnection, "", "", false)
+		d.QueueConnection = &rabbitmq.Connection{}
 	}
 
 	if d.AiOrchestratorQueue == nil {
-		d.AiOrchestratorQueue = queue.NewAiOrchestratorQueue(d.Queue)
+		d.AiOrchestratorQueue = rabbitmq.NewQueue(d.QueueConnection,
+			properties.AiOrchestratorQueueName,
+			rabbitmq.CONTENT_TYPE_JSON,
+			properties.CreateQueueIfNX())
 	}
 
 	if d.UseCase == nil {
@@ -57,4 +54,10 @@ func (d *Dependencies) Inject() *Dependencies {
 		d.Controller = controllers.NewController(d.UseCase)
 	}
 	return d
+}
+
+func NewDependencies() *Dependencies {
+	deps := &Dependencies{}
+	deps.Inject()
+	return deps
 }

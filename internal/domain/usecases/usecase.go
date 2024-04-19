@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/GabiHert/pesquisai-api/internal/config/errortypes"
+	"github.com/GabiHert/pesquisai-api/internal/domain/builder"
 	"github.com/GabiHert/pesquisai-api/internal/domain/interfaces"
 	"github.com/GabiHert/pesquisai-database-lib/models"
 	"github.com/google/uuid"
@@ -13,7 +14,7 @@ import (
 
 type UseCase struct {
 	requestRepository   interfaces.RequestRepository
-	aiOrchestratorQueue interfaces.AiOrchestratorQueue
+	aiOrchestratorQueue interfaces.Queue
 }
 
 func (u UseCase) Create(ctx context.Context, request models.Request) error {
@@ -27,7 +28,14 @@ func (u UseCase) Create(ctx context.Context, request models.Request) error {
 		return err
 	}
 
-	err = u.aiOrchestratorQueue.Publish(ctx, &request)
+	b, err := builder.BuildAiOrchestratorMessage(ctx, &request)
+	if err != nil {
+		slog.ErrorContext(ctx, "useCase.Create",
+			slog.String("error", err.Error()))
+		return err
+	}
+
+	err = u.aiOrchestratorQueue.Publish(ctx, b)
 	if err != nil {
 		slog.ErrorContext(ctx, "useCase.Create",
 			slog.String("error", err.Error()))
@@ -58,7 +66,7 @@ func (u UseCase) Get(ctx context.Context, id uuid.UUID) (*models.Request, error)
 	return res, nil
 }
 
-func NewUseCase(requestRepository interfaces.RequestRepository, aiOrchestratorQueue interfaces.AiOrchestratorQueue) interfaces.UseCase {
+func NewUseCase(requestRepository interfaces.RequestRepository, aiOrchestratorQueue interfaces.Queue) interfaces.UseCase {
 	return &UseCase{
 		requestRepository:   requestRepository,
 		aiOrchestratorQueue: aiOrchestratorQueue,

@@ -16,6 +16,14 @@ github.com/GabiHert/pesquisai-rabbitmq-lib v0.0.0-20240418020447-1ae12b842510 h1
 github.com/GabiHert/pesquisai-rabbitmq-lib v0.0.0-20240418020447-1ae12b842510/go.mod h1:yX4zvtGp46nBq/UMG8Q7jd1izLZM2Ien6irQWD7W5V0=
 github.com/GabiHert/pesquisai-rabbitmq-lib v0.0.2 h1:bRt65UFPKi0MNzM8aVbgVlZQKz0Po/KVilXzCd4/ZcU=
 github.com/GabiHert/pesquisai-rabbitmq-lib v0.0.2/go.mod h1:yX4zvtGp46nBq/UMG8Q7jd1izLZM2Ien6irQWD7W5V0=
+github.com/GabiHert/pesquisai-rabbitmq-lib v0.0.3 h1:aggDfSs+EEIgVcC29ThhN4ip7g3Rxvi40Z5KDmbPArI=
+github.com/GabiHert/pesquisai-rabbitmq-lib v0.0.3/go.mod h1:yX4zvtGp46nBq/UMG8Q7jd1izLZM2Ien6irQWD7W5V0=
+github.com/GabiHert/pesquisai-rabbitmq-lib v0.0.4 h1:t2jydRmiOcSlENL69EWF4pBnxDvL2ebSbGX+QqZP3aU=
+github.com/GabiHert/pesquisai-rabbitmq-lib v0.0.4/go.mod h1:yX4zvtGp46nBq/UMG8Q7jd1izLZM2Ien6irQWD7W5V0=
+github.com/GabiHert/pesquisai-rabbitmq-lib v0.0.5 h1:U4BQ0ds+D+6KqZqDzzghAi64iNfupEC5bpAqEdcCxO8=
+github.com/GabiHert/pesquisai-rabbitmq-lib v0.0.5/go.mod h1:yX4zvtGp46nBq/UMG8Q7jd1izLZM2Ien6irQWD7W5V0=
+github.com/GabiHert/pesquisai-rabbitmq-lib v0.0.6 h1:s5rfTOgmtuqtFyKCXf5XsqOg3lRzY46EJeiCDXvixAo=
+github.com/GabiHert/pesquisai-rabbitmq-lib v0.0.6/go.mod h1:yX4zvtGp46nBq/UMG8Q7jd1izLZM2Ien6irQWD7W5V0=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -43,6 +51,8 @@ github.com/jinzhu/inflection v1.0.0 h1:K317FqzuhWc8YvSVlFMCCUb36O/S9MCKRDI7QkRKD
 github.com/jinzhu/inflection v1.0.0/go.mod h1:h+uFLlag+Qp1Va5pdKtLDYj+kHp5pxUVkryuEj+Srlc=
 github.com/jinzhu/now v1.1.5 h1:/o9tlHleP7gOFmsnYNz3RGnqzefHA47wQpKrrdTIwXQ=
 github.com/jinzhu/now v1.1.5/go.mod h1:d3SSVoowX0Lcu0IBviAWJpolVfI5UJVZZ7cO71lE/z8=
+github.com/joho/godotenv v1.5.1 h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=
+github.com/joho/godotenv v1.5.1/go.mod h1:f4LDr5Voq0i2e/R5DDNOoa2zzDfwtkZa6DnEwAbqwq4=
 github.com/leodido/go-urn v1.4.0 h1:WT9HwE9SGECu3lg4d/dIA+jxlljEa1/ffXKmRjqdmIQ=
 github.com/leodido/go-urn v1.4.0/go.mod h1:bvxc+MVxLKB4z00jd1z+Dvzr47oO32F/QSNjSBOlFxI=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
