@@ -9,7 +9,7 @@ import (
 )
 
 func Connect(deps *injector.Dependencies) error {
-	err := deps.Connection.Connect(connection.Config{
+	err := deps.DatabaseConnection.Connect(connection.Config{
 		User: properties.DatabaseConnectionUser(),
 		Host: properties.DatabaseConnectionHost(),
 		Psw:  properties.DatabaseConnectionPassword(),
@@ -30,5 +30,9 @@ func Connect(deps *injector.Dependencies) error {
 		properties.QueueConnectionPassword(),
 		properties.QueueConnectionHost(),
 		properties.QueueConnectionPort())
+	if err != nil {
+		return err
+	}
+	err = deps.AiOrchestratorQueue.Connect(properties.AiOrchestratorQueueName)
 	return err
 }

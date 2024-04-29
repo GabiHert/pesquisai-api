@@ -8,7 +8,7 @@ const (
 )
 
 func CreateQueueIfNX() bool {
-	return false
+	return os.Getenv("CREATE_QUEUE_IF_NX") == "true"
 }
 
 func QueueConnectionUser() string {

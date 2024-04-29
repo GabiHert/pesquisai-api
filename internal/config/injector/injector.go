@@ -16,15 +16,15 @@ type Dependencies struct {
 	Mux                 *http.ServeMux
 	Controller          interfaces.Controller
 	RequestRepository   interfaces.RequestRepository
-	Connection          *connection.Connection
+	DatabaseConnection  *connection.Connection
 	QueueConnection     *rabbitmq.Connection
 	UseCase             interfaces.UseCase
 	AiOrchestratorQueue interfaces.Queue
 }
 
 func (d *Dependencies) Inject() *Dependencies {
-	if d.Connection == nil {
-		d.Connection = &connection.Connection{DB: &gorm.DB{}}
+	if d.DatabaseConnection == nil {
+		d.DatabaseConnection = &connection.Connection{DB: &gorm.DB{}}
 	}
 
 	if d.Mux == nil {
@@ -32,7 +32,7 @@ func (d *Dependencies) Inject() *Dependencies {
 	}
 
 	if d.RequestRepository == nil {
-		d.RequestRepository = &repositories.Request{Connection: d.Connection}
+		d.RequestRepository = &repositories.Request{Connection: d.DatabaseConnection}
 	}
 
 	if d.QueueConnection == nil {
