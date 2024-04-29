@@ -3,8 +3,9 @@ package properties
 import "os"
 
 const (
-	DatabaseTablePrefix     = "pesquisai."
-	AiOrchestratorQueueName = "ai-orchestrator"
+	DatabaseTablePrefix                  = "pesquisai."
+	AiOrchestratorQueueName              = "ai-orchestrator"
+	AiOrchestratorResearchLocationAction = "location"
 )
 
 func CreateQueueIfNX() bool {
