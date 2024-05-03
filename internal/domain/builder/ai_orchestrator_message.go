@@ -9,7 +9,7 @@ import (
 )
 
 type message struct {
-	RequestId *string `json:"requestId"`
+	RequestId *string `json:"request_id"`
 	Context   *string `json:"context"`
 	Research  *string `json:"research"`
 	Action    *string `json:"action"`
