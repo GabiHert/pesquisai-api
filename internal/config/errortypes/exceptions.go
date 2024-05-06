@@ -1,7 +1,7 @@
 package errortypes
 
 import (
-	"github.com/GabiHert/pesquisai-errors-lib/exceptions"
+	"github.com/PesquisAi/pesquisai-errors-lib/exceptions"
 	"net/http"
 )
 

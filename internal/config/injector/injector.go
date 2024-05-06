@@ -1,13 +1,13 @@
 package injector
 
 import (
-	"github.com/GabiHert/pesquisai-api/internal/config/properties"
-	"github.com/GabiHert/pesquisai-api/internal/delivery/controllers"
-	"github.com/GabiHert/pesquisai-api/internal/domain/interfaces"
-	"github.com/GabiHert/pesquisai-api/internal/domain/usecases"
-	"github.com/GabiHert/pesquisai-database-lib/connection"
-	"github.com/GabiHert/pesquisai-database-lib/repositories"
-	"github.com/GabiHert/pesquisai-rabbitmq-lib/rabbitmq"
+	"github.com/PesquisAi/pesquisai-api/internal/config/properties"
+	"github.com/PesquisAi/pesquisai-api/internal/delivery/controllers"
+	"github.com/PesquisAi/pesquisai-api/internal/domain/interfaces"
+	"github.com/PesquisAi/pesquisai-api/internal/domain/usecases"
+	"github.com/PesquisAi/pesquisai-database-lib/connection"
+	"github.com/PesquisAi/pesquisai-database-lib/repositories"
+	"github.com/PesquisAi/pesquisai-rabbitmq-lib/rabbitmq"
 	"gorm.io/gorm"
 	"net/http"
 )

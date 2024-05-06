@@ -2,11 +2,11 @@ package controllers
 
 import (
 	"encoding/json"
-	"github.com/GabiHert/pesquisai-api/internal/config/errortypes"
-	"github.com/GabiHert/pesquisai-api/internal/delivery/dtos"
-	"github.com/GabiHert/pesquisai-api/internal/delivery/validations"
-	"github.com/GabiHert/pesquisai-api/internal/domain/interfaces"
-	"github.com/GabiHert/pesquisai-database-lib/models"
+	"github.com/PesquisAi/pesquisai-api/internal/config/errortypes"
+	"github.com/PesquisAi/pesquisai-api/internal/delivery/dtos"
+	"github.com/PesquisAi/pesquisai-api/internal/delivery/validations"
+	"github.com/PesquisAi/pesquisai-api/internal/domain/interfaces"
+	"github.com/PesquisAi/pesquisai-database-lib/models"
 	"github.com/google/uuid"
 	"log/slog"
 	"net/http"

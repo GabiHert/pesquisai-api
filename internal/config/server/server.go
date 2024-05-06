@@ -2,8 +2,8 @@ package server
 
 import (
 	"fmt"
-	"github.com/GabiHert/pesquisai-api/internal/config/routes"
-	"github.com/GabiHert/pesquisai-api/internal/domain/interfaces"
+	"github.com/PesquisAi/pesquisai-api/internal/config/routes"
+	"github.com/PesquisAi/pesquisai-api/internal/domain/interfaces"
 	"log/slog"
 	"net/http"
 )

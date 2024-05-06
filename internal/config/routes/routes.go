@@ -2,9 +2,9 @@ package routes
 
 import (
 	"errors"
-	"github.com/GabiHert/pesquisai-api/internal/config/errortypes"
-	"github.com/GabiHert/pesquisai-api/internal/domain/interfaces"
-	"github.com/GabiHert/pesquisai-errors-lib/exceptions"
+	"github.com/PesquisAi/pesquisai-api/internal/config/errortypes"
+	"github.com/PesquisAi/pesquisai-api/internal/domain/interfaces"
+	"github.com/PesquisAi/pesquisai-errors-lib/exceptions"
 	"log/slog"
 	"net/http"
 )

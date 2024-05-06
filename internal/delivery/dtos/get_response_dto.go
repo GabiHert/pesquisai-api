@@ -2,7 +2,7 @@ package dtos
 
 import (
 	"encoding/json"
-	"github.com/GabiHert/pesquisai-database-lib/models"
+	"github.com/PesquisAi/pesquisai-database-lib/models"
 	"net/http"
 	"time"
 )

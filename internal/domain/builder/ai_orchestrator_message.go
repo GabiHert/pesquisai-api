@@ -3,8 +3,8 @@ package builder
 import (
 	"context"
 	"encoding/json"
-	"github.com/GabiHert/pesquisai-api/internal/config/properties"
-	"github.com/GabiHert/pesquisai-database-lib/models"
+	"github.com/PesquisAi/pesquisai-api/internal/config/properties"
+	"github.com/PesquisAi/pesquisai-database-lib/models"
 	"log/slog"
 )
 
