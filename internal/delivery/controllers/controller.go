@@ -6,7 +6,7 @@ import (
 	"github.com/PesquisAi/pesquisai-api/internal/delivery/dtos"
 	"github.com/PesquisAi/pesquisai-api/internal/delivery/validations"
 	"github.com/PesquisAi/pesquisai-api/internal/domain/interfaces"
-	"github.com/PesquisAi/pesquisai-database-lib/models"
+	"github.com/PesquisAi/pesquisai-database-lib/sql/models"
 	"github.com/google/uuid"
 	"log/slog"
 	"net/http"

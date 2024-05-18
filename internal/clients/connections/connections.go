@@ -3,7 +3,7 @@ package connections
 import (
 	"github.com/PesquisAi/pesquisai-api/internal/config/injector"
 	"github.com/PesquisAi/pesquisai-api/internal/config/properties"
-	"github.com/PesquisAi/pesquisai-database-lib/connection"
+	"github.com/PesquisAi/pesquisai-database-lib/sql/connection"
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
 )
@@ -33,6 +33,6 @@ func Connect(deps *injector.Dependencies) error {
 	if err != nil {
 		return err
 	}
-	err = deps.AiOrchestratorQueue.Connect(properties.AiOrchestratorQueueName)
+	err = deps.AiOrchestratorQueue.Connect()
 	return err
 }

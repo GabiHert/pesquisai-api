@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"github.com/PesquisAi/pesquisai-api/internal/config/properties"
-	"github.com/PesquisAi/pesquisai-database-lib/models"
+	"github.com/PesquisAi/pesquisai-database-lib/sql/models"
 	"log/slog"
 )
 

@@ -5,8 +5,8 @@ import (
 	"github.com/PesquisAi/pesquisai-api/internal/delivery/controllers"
 	"github.com/PesquisAi/pesquisai-api/internal/domain/interfaces"
 	"github.com/PesquisAi/pesquisai-api/internal/domain/usecases"
-	"github.com/PesquisAi/pesquisai-database-lib/connection"
-	"github.com/PesquisAi/pesquisai-database-lib/repositories"
+	"github.com/PesquisAi/pesquisai-database-lib/sql/connection"
+	"github.com/PesquisAi/pesquisai-database-lib/sql/repositories"
 	"github.com/PesquisAi/pesquisai-rabbitmq-lib/rabbitmq"
 	"gorm.io/gorm"
 	"net/http"
@@ -42,8 +42,9 @@ func (d *Dependencies) Inject() *Dependencies {
 	if d.AiOrchestratorQueue == nil {
 		d.AiOrchestratorQueue = rabbitmq.NewQueue(d.QueueConnection,
 			properties.AiOrchestratorQueueName,
-			rabbitmq.CONTENT_TYPE_JSON,
-			properties.CreateQueueIfNX())
+			rabbitmq.ContentTypeJson,
+			properties.CreateQueueIfNX(),
+			false, false)
 	}
 
 	if d.UseCase == nil {

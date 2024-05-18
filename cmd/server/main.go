@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/PesquisAi/pesquisai-api/internal/config/connections"
+	"github.com/PesquisAi/pesquisai-api/internal/clients/connections"
 	"github.com/PesquisAi/pesquisai-api/internal/config/injector"
 	"github.com/PesquisAi/pesquisai-api/internal/config/server"
 )

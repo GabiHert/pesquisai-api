@@ -6,7 +6,7 @@ import (
 	"github.com/PesquisAi/pesquisai-api/internal/config/errortypes"
 	"github.com/PesquisAi/pesquisai-api/internal/domain/builder"
 	"github.com/PesquisAi/pesquisai-api/internal/domain/interfaces"
-	"github.com/PesquisAi/pesquisai-database-lib/models"
+	"github.com/PesquisAi/pesquisai-database-lib/sql/models"
 	"github.com/google/uuid"
 	"log/slog"
 	"strings"
